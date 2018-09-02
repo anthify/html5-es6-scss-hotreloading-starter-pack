@@ -6,6 +6,7 @@ import rename from 'gulp-rename';
 import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
 import del from 'del';
+import fileInclude from 'gulp-file-include';
 
 const paths = {
   styles: {
@@ -15,10 +16,16 @@ const paths = {
   scripts: {
     src: 'src/scripts/**/*.js',
     dest: 'dist/scripts/'
+  },
+  html: {
+    src: 'src/routes/*.html',
+    template: 'src/templates/*.html',
+    pages: 'src/pages/*.html',
+    dest: 'dist/'
   }
 };
 
-export const clean = () => del([ 'assets' ]);
+export const clean = () => del([ 'dist' ]);
 
 export function styles() {
   return gulp.src(paths.styles.src)
@@ -39,14 +46,28 @@ export function scripts() {
     .pipe(gulp.dest(paths.scripts.dest));
 }
 
-
-function watchFiles() {
-  gulp.watch(paths.styles.src, styles);
+export function html() {
+  return gulp.src(paths.html.src)
+    .pipe(fileInclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest(paths.html.dest));
 }
-export { watchFiles as watch };
 
+export function watch() {
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.scripts.src, scripts);
+  gulp.watch([
+    paths.html.pages,
+    paths.html.src,
+    paths.html.template
+  ],
+  html);
+}
 
-const build = gulp.series(clean, gulp.parallel(styles, scripts));
+const build = gulp.series(clean, gulp.parallel(styles, scripts, html));
+
 gulp.task('build', build);
 
 export default build;
