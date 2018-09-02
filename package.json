@@ -1,0 +1,28 @@
+{
+  "name": "solar-player-website",
+  "version": "1",
+  "description": "Website for SolarPlayer",
+  "main": "index.js",
+  "author": "anthify <anthony.thomas.oneill@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "8.9.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.0.1"
+  }
+}
