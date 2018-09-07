@@ -1,3 +1,1 @@
-// module.exports = () => {
-  console.log("loaded");
-// };
+console.log("loaded");
