@@ -11,7 +11,7 @@
     "dev": "gulp watch"
   },
   "engines": {
-    "node": "8.9.3"
+    "node": "9.10.0"
   },
   "husky": {
     "hooks": {
