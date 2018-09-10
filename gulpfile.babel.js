@@ -7,6 +7,7 @@ import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
 import del from 'del';
 import fileInclude from 'gulp-file-include';
+import imagemin from 'gulp-imagemin';
 
 const paths = {
   styles: {
@@ -22,6 +23,10 @@ const paths = {
     template: 'src/templates/*.html',
     pages: 'src/pages/*.html',
     dest: 'dist/'
+  },
+  images: {
+    src: 'src/images/*',
+    dest: 'dist/images'
   }
 };
 
@@ -55,18 +60,37 @@ export function html() {
     .pipe(gulp.dest(paths.html.dest));
 }
 
+export function images() {
+  return gulp.src(paths.images.src)
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({
+        plugins: [
+          {removeViewBox: true},
+          {cleanupIDs: false}
+        ]
+      })
+    ]))
+    .pipe(gulp.dest(paths.images.dest))
+}
+
 export function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch([
     paths.html.pages,
     paths.html.src,
-    paths.html.template
+    paths.html.template,
   ],
   html);
+  gulp.watch([
+    paths.images.src
+  ], images)
 }
 
-const build = gulp.series(clean, gulp.parallel(styles, scripts, html));
+const build = gulp.series(clean, gulp.parallel(styles, scripts, html, images));
 
 gulp.task('build', build);
 

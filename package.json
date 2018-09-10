@@ -6,6 +6,10 @@
   "author": "anthify <anthony.thomas.oneill@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp watch"
+  },
   "engines": {
     "node": "8.9.3"
   },
@@ -17,13 +21,13 @@
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
+    "gulp-cli": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.0.1",
+    "gulp-imagemin": "^4.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
     "gulp-uglify": "^3.0.1"
   },
-  "dependencies": {
-    "gulp-cli": "^2.0.1"
-  }
+  "dependencies": {}
 }
