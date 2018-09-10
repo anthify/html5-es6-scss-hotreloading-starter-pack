@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import gutil from 'gulp-util';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
@@ -8,6 +9,9 @@ import sass from 'gulp-sass';
 import del from 'del';
 import fileInclude from 'gulp-file-include';
 import imagemin from 'gulp-imagemin';
+import favicon from "favicons";
+
+import config from "./config";
 
 const paths = {
   styles: {
@@ -27,6 +31,10 @@ const paths = {
   images: {
     src: 'src/images/*',
     dest: 'dist/images'
+  },
+  favicon: {
+    src: 'src/favicon/favicon.png',
+    dest: 'dist/' 
   }
 };
 
@@ -76,6 +84,13 @@ export function images() {
     .pipe(gulp.dest(paths.images.dest))
 }
 
+export function favicons() {
+  return gulp.src(paths.favicon.src)
+    .pipe(favicon.stream(config))
+    // .on("error", gutil.log)
+    .pipe(gulp.dest(paths.favicon.dest));
+}
+
 export function watch() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
@@ -90,7 +105,7 @@ export function watch() {
   ], images)
 }
 
-const build = gulp.series(clean, gulp.parallel(styles, scripts, html, images));
+const build = gulp.series(clean, favicons, gulp.parallel(styles, scripts, html, images));
 
 gulp.task('build', build);
 
