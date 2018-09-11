@@ -9,6 +9,7 @@ import del from "del";
 import fileInclude from "gulp-file-include";
 import imagemin from "gulp-imagemin";
 import favicon from "favicons";
+import htmlmin from "gulp-htmlmin";
 
 import config from "./config";
 
@@ -74,6 +75,13 @@ export function html() {
     .pipe(gulp.dest(paths.html.dest));
 }
 
+export function minifyHtml() {
+  return gulp
+    .src(`${paths.html.dest}/*.html`)
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest(paths.html.dest));
+}
+
 export function images() {
   return gulp
     .src(paths.images.src)
@@ -97,7 +105,7 @@ export function favicons() {
     .pipe(gulp.dest(paths.favicon.dest));
 }
 
-export function watch() {
+export function gulplisten() {
   gulp.watch(paths.styles.src, styles);
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
@@ -107,7 +115,9 @@ export function watch() {
 const build = gulp.series(
   clean,
   favicons,
-  gulp.parallel(styles, scripts, html, images)
+  html,
+  minifyHtml,
+  gulp.parallel(styles, scripts, images)
 );
 
 gulp.task("build", build);
