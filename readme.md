@@ -47,7 +47,7 @@ CSS can be found in `./src/styles/main.scss`. If you're unfamiliar with [SCSS](h
 
 ## Contributing
 
-I've built this for personal use but I hope it can be of some use to you. There are likely a myriad of issues and missing pieces to will make this not worth using, so if you notice how this can be improved just create PR or raise an issue.
+I've built this for personal use but I hope it can be of some use to you. There are likely a myriad of issues and missing pieces will may make this not worth using for you, so if you notice how this can be improved then please create a PR or raise an issue.
 
 ## Other
 
