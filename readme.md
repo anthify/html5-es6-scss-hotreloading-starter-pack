@@ -43,7 +43,7 @@ CSS can be found in `./src/styles/main.scss`. If you're unfamiliar with [SCSS](h
 
 ### 👩‍💻 Linting and Formatting
 
-[Eslint](https://eslint.org/) is used to give warnings to any potential errors as well as formatting rules provided by (Prettier)[https://github.com/prettier/prettier]. You may need to add an eslint plugin to your code editor. There is also a pre-commit hook that will automatically format your code, so don't worry about zealously following the rules 🤘. If you want to _break_ rules you can find them chilling in the `.eslintrc` file.
+[Eslint](https://eslint.org/) is used to give warnings to any potential errors as well as formatting rules provided by [Prettier](https://github.com/prettier/prettier). You may need to add an eslint plugin to your code editor. There is also a pre-commit hook that will automatically format your code, so don't worry about zealously following the rules 🤘. If you want to _break_ rules you can find them chilling in the `.eslintrc` file.
 
 ## Contributing
 
