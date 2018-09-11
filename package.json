@@ -1,11 +1,11 @@
 {
-  "name": "solar-player-website",
+  "name": "html5-es6-scss-hotreloading-starter-pack",
   "version": "1",
-  "description": "Website for SolarPlayer",
+  "description": "HTML5, ES6, SCSS, Hot reloading starter pack",
   "main": "index.js",
   "author": "anthify <anthony.thomas.oneill@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "gulp build",
     "dev": "gulp dev"
