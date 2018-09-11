@@ -10,8 +10,13 @@ import fileInclude from "gulp-file-include";
 import imagemin from "gulp-imagemin";
 import favicon from "favicons";
 import htmlmin from "gulp-htmlmin";
+import browserSyncPackage from "browser-sync";
 
 import config from "./config";
+
+const browserSync = browserSyncPackage.create();
+
+const { reload } = browserSync;
 
 const paths = {
   styles: {
@@ -111,6 +116,37 @@ export function gulplisten() {
   gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
   gulp.watch([paths.images.src], images);
 }
+
+export function server() {
+  browserSync.init({
+    server: {
+      baseDir: "./dist/"
+    }
+  });
+
+  gulp
+    .watch([
+      paths.styles.src,
+      paths.scripts.src,
+      paths.html.pages,
+      paths.html.src,
+      paths.html.template,
+      paths.images.src
+    ])
+    .on("change", reload);
+}
+
+const dev = gulp.series(
+  clean,
+  favicons,
+  html,
+  styles,
+  scripts,
+  images,
+  gulp.parallel([server, gulplisten])
+);
+
+gulp.task("dev", dev);
 
 const build = gulp.series(
   clean,

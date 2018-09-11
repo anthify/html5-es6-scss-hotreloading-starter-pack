@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "gulp build",
-    "dev": "gulp watch"
+    "dev": "gulp dev"
   },
   "engines": {
     "node": "9.10.0"
@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md,html}": [
+    "*.{js,json,css,md}": [
       "prettier --write",
       "git add"
     ]
@@ -28,6 +28,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "browser-sync": "^2.24.7",
     "del": "^3.0.0",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
