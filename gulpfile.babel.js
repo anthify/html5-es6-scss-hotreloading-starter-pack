@@ -91,13 +91,10 @@ export function images() {
 }
 
 export function favicons() {
-  return (
-    gulp
-      .src(paths.favicon.src)
-      .pipe(favicon.stream(config))
-      // .on("error", gutil.log)
-      .pipe(gulp.dest(paths.favicon.dest))
-  );
+  return gulp
+    .src(paths.favicon.src)
+    .pipe(favicon.stream(config))
+    .pipe(gulp.dest(paths.favicon.dest));
 }
 
 export function watch() {
