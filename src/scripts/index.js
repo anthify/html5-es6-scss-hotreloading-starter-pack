@@ -1,1 +1,1 @@
-console.log("loaded!");
+console.log("👋 from javascript");

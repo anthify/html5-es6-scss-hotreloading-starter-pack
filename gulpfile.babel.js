@@ -120,7 +120,11 @@ export function gulplisten() {
 export function server() {
   browserSync.init({
     server: {
-      baseDir: "./dist/"
+      baseDir: "./dist/",
+      index: "index.html",
+      serveStaticOptions: {
+        extensions: ["html"]
+      }
     }
   });
 
