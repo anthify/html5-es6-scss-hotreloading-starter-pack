@@ -1,7 +1,9 @@
 import gulp from "gulp";
-import babel from "gulp-babel";
-import concat from "gulp-concat";
+import browserify from "browserify";
 import uglify from "gulp-uglify";
+import babelify from "babelify";
+import source from "vinyl-source-stream";
+import buffer from "vinyl-buffer";
 import rename from "gulp-rename";
 import cleanCSS from "gulp-clean-css";
 import sass from "gulp-sass";
@@ -24,7 +26,7 @@ const paths = {
     dest: "dist/styles/"
   },
   scripts: {
-    src: "src/scripts/**/*.js",
+    src: "src/scripts/index.js",
     dest: "dist/scripts/"
   },
   html: {
@@ -60,11 +62,11 @@ export function styles() {
 }
 
 export function scripts() {
-  return gulp
-    .src(paths.scripts.src, { sourcemaps: true })
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(concat("main.min.js"))
+  return browserify(paths.scripts.src)
+    .transform("babelify", { presets: ["@babel/preset-env"] })
+    .bundle()
+    .pipe(source("main.min.js"))
+    .pipe(buffer())
     .pipe(gulp.dest(paths.scripts.dest));
 }
 

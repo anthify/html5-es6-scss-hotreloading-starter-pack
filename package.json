@@ -28,7 +28,9 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "babelify": "^10.0.0",
     "browser-sync": "^2.24.7",
+    "browserify": "^16.2.2",
     "del": "^3.0.0",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
@@ -39,10 +41,8 @@
     "eslint-plugin-standard": "^4.0.0",
     "favicons": "^5.1.1",
     "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-cli": "^2.0.1",
-    "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.0.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^4.1.0",
@@ -52,7 +52,9 @@
     "gulp-util": "^3.0.8",
     "husky": "^1.0.0-rc.13",
     "lint-staged": "^7.2.2",
-    "prettier": "1.14.2"
+    "prettier": "1.14.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {}
 }
