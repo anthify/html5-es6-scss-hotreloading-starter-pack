@@ -70,6 +70,16 @@ export function scripts() {
     .pipe(gulp.dest(paths.scripts.dest));
 }
 
+export function minifyScripts() {
+  return browserify(paths.scripts.src)
+    .transform("babelify", { presets: ["@babel/preset-env"] })
+    .bundle()
+    .pipe(source("main.min.js"))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.scripts.dest));
+}
+
 export function html() {
   return gulp
     .src(paths.html.src)
@@ -155,7 +165,7 @@ const build = gulp.series(
   favicons,
   html,
   minifyHtml,
-  gulp.parallel(styles, scripts, images)
+  gulp.parallel(styles, minifyScripts, images)
 );
 
 gulp.task("build", build);
