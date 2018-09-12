@@ -26,6 +26,7 @@ const paths = {
     dest: "dist/styles/"
   },
   scripts: {
+    dev: "src/scripts/**/*.js",
     src: "src/scripts/index.js",
     dest: "dist/scripts/"
   },
@@ -124,7 +125,7 @@ export function favicons() {
 
 export function gulplisten() {
   gulp.watch(paths.styles.src, styles);
-  gulp.watch(paths.scripts.src, scripts);
+  gulp.watch(paths.scripts.dev, scripts);
   gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
   gulp.watch([paths.images.src], images);
 }
@@ -143,7 +144,7 @@ export function server() {
   gulp
     .watch([
       paths.styles.src,
-      paths.scripts.src,
+      paths.scripts.dev,
       paths.html.pages,
       paths.html.src,
       paths.html.template,
