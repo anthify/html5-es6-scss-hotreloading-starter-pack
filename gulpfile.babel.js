@@ -62,6 +62,25 @@ export function styles() {
     .pipe(gulp.dest(paths.styles.dest));
 }
 
+export function stylesDev() {
+  return gulp
+    .src(paths.styles.src)
+    .pipe(sass().on("error", sass.logError))
+    .pipe(cleanCSS())
+    .pipe(
+      rename({
+        basename: "main",
+        suffix: ".min"
+      })
+    )
+    .pipe(gulp.dest(paths.styles.dest))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
+}
+
 export function scripts() {
   return browserify(paths.scripts.src)
     .transform("babelify", { presets: ["@babel/preset-env"] })
@@ -124,7 +143,7 @@ export function favicons() {
 }
 
 export function gulplisten() {
-  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.styles.src, stylesDev);
   gulp.watch(paths.scripts.dev, scripts);
   gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
   gulp.watch([paths.images.src], images);
@@ -143,7 +162,6 @@ export function server() {
 
   gulp
     .watch([
-      paths.styles.src,
       paths.scripts.dev,
       paths.html.pages,
       paths.html.src,
