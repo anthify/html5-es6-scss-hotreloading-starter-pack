@@ -74,11 +74,7 @@ export function stylesDev() {
       })
     )
     .pipe(gulp.dest(paths.styles.dest))
-    .pipe(
-      browserSync.reload({
-        stream: true
-      })
-    );
+    .pipe(browserSync.stream());
 }
 
 export function scripts() {
