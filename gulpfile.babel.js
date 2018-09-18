@@ -131,6 +131,10 @@ export function images() {
     .pipe(gulp.dest(paths.images.dest));
 }
 
+export function imagesDev() {
+  return gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest));
+}
+
 export function favicons() {
   return gulp
     .src(paths.favicon.src)
@@ -142,7 +146,7 @@ export function gulplisten() {
   gulp.watch(paths.styles.src, stylesDev);
   gulp.watch(paths.scripts.dev, scripts);
   gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
-  gulp.watch([paths.images.src], images);
+  gulp.watch([paths.images.src], imagesDev);
 }
 
 export function server() {
@@ -173,7 +177,7 @@ const dev = gulp.series(
   html,
   styles,
   scripts,
-  images,
+  imagesDev,
   gulp.parallel([server, gulplisten])
 );
 
