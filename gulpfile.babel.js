@@ -163,7 +163,7 @@ export function favicons() {
 export function gulplisten() {
   gulp.watch(paths.styles.src, stylesDev);
   gulp.watch(paths.scripts.dev, scripts);
-  gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
+  gulp.watch([paths.html.pages, paths.html.src, paths.html.template], htmlDev);
   gulp.watch([paths.images.src], imagesDev);
 }
 

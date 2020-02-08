@@ -4,127 +4,36 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  background: darken(white, 3%);
   font-size: 12px;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+nav {
   width: 100vw;
-}
-
-.ipad {
-  width: 1368px;
-  height: 912px;
-  border: 1px solid black;
-  position: relative;
+  background: white;
+  display: block;
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  
-  box-sizing: border-box;
-}
-
-header {
-  z-index: 99999;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  img {
-    width: 100%;
-  }
-}
-
-.content {
-  width: 70%;
-  padding-top: 92px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  img {
-    width: 100%;
-  }
-}
-
-.sidebar {
-  width: 30%;
-  padding-left: 30px;
-  padding-top: 92px;
-  img {
-    width: 100%;
-  }
-}
-
-.hide {
-  display: none;
-}
-
-.c-save-btn,
-.c-edit-btn {
-  width: 44px;
-  height: 44px;
-  position: absolute;
-  top: -21px;
-  right: 44px;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.c-section-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  width: 100%;
-  background-color: white;
-  cursor: pointer;
-  &:hover {
-    background-color: #FFEEAE;
-    .c-edit-btn, .c-save-btn {
-      opacity: 1;
+  box-shadow: 0 -3px 27px -5px rgba(50,50,93,.25), 0 -3px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.03);
+  a {
+    padding: 1rem;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+    background: darken(white, 2%);
+    border-bottom: 3px solid skyblue;
+    margin-right: 10px;
+    transition: all .3s ease;
+    &:hover {
+      background: white;
+      border-color: blueviolet;
     }
   }
 }
 
-.c-section {
-  display: flex;
-  flex-direction: row;
-  width: 830px;
-  margin-right: 28px;
-  border-bottom: 1px solid #889cad;
-  .c-label {
-    font-size: 16px;
-    color: #2E323C;
-    font-weight: bold;
-    padding-top: 28px;
-    width: 355px;
-    border-right: 1px solid #889cad;
-  }
-
-  .c-textarea {
-    padding-top: 22px;
-    padding-bottom: 28px;
-    padding-left: 18px;
-    width: 400px;
-    textarea {
-      background: transparent;
-      border-radius: 4px;
-      border: 1px solid #889cad;
-      width: 100%;
-      resize: none;
-      -webkit-appearance: none;
-      outline: none;
-      padding: 6px;
-      font-size: 16px;
-      color: #2E323C;
-    }
-    textarea:disabled {
-      border-color: transparent;
-    }
+.wrapper {
+  text-align: center;
+  img {
+    max-width: 90%;
   }
 }
