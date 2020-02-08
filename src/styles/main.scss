@@ -4,24 +4,29 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: radial-gradient(ellipse at center, #bceec7 50%,#00a293 100%);;
+  background: darken(white, 3%);
   font-size: 12px;
 }
 
 nav {
   width: 100vw;
-  background: tomato;
+  background: white;
   display: block;
   display: flex;
   justify-content: center;
+  box-shadow: 0 -3px 27px -5px rgba(50,50,93,.25), 0 -3px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.03);
   a {
     padding: 1rem;
-    color: white;
+    font-weight: bold;
+    color: #222;
     text-decoration: none;
-    background: darken(tomato, 20%);
+    background: darken(white, 2%);
+    border-bottom: 3px solid skyblue;
+    margin-right: 10px;
     transition: all .3s ease;
     &:hover {
-      background: darken(tomato, 30%);
+      background: white;
+      border-color: blueviolet;
     }
   }
 }

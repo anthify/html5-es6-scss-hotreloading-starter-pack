@@ -101,6 +101,24 @@ export function html() {
     .src(paths.html.src)
     .pipe(
       fileInclude({
+        context: {
+          env: "prod"
+        },
+        prefix: "@@",
+        basepath: "@file"
+      })
+    )
+    .pipe(gulp.dest(paths.html.dest));
+}
+
+export function htmlDev() {
+  return gulp
+    .src(paths.html.src)
+    .pipe(
+      fileInclude({
+        context: {
+          env: "dev"
+        },
         prefix: "@@",
         basepath: "@file"
       })
@@ -121,7 +139,7 @@ export function images() {
     .pipe(
       imagemin([
         imagemin.gifsicle({ interlaced: true }),
-        imagemin.jpegtran({ progressive: true }),
+        imagemin.mozjpeg({ progressive: true }),
         imagemin.optipng({ optimizationLevel: 5 }),
         imagemin.svgo({
           plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
@@ -145,7 +163,7 @@ export function favicons() {
 export function gulplisten() {
   gulp.watch(paths.styles.src, stylesDev);
   gulp.watch(paths.scripts.dev, scripts);
-  gulp.watch([paths.html.pages, paths.html.src, paths.html.template], html);
+  gulp.watch([paths.html.pages, paths.html.src, paths.html.template], htmlDev);
   gulp.watch([paths.images.src], imagesDev);
 }
 
@@ -173,8 +191,7 @@ export function server() {
 
 const dev = gulp.series(
   clean,
-  favicons,
-  html,
+  htmlDev,
   styles,
   scripts,
   imagesDev,
