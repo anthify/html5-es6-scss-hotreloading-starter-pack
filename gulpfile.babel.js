@@ -10,11 +10,8 @@ import sass from "gulp-sass";
 import del from "del";
 import fileInclude from "gulp-file-include";
 import imagemin from "gulp-imagemin";
-import favicon from "favicons";
 import htmlmin from "gulp-htmlmin";
 import browserSyncPackage from "browser-sync";
-
-import config from "./config";
 
 const browserSync = browserSyncPackage.create();
 
@@ -39,10 +36,6 @@ const paths = {
   images: {
     src: "src/images/*",
     dest: "dist/images"
-  },
-  favicon: {
-    src: "src/favicon/favicon.png",
-    dest: "dist/"
   }
 };
 
@@ -153,13 +146,6 @@ export function imagesDev() {
   return gulp.src(paths.images.src).pipe(gulp.dest(paths.images.dest));
 }
 
-export function favicons() {
-  return gulp
-    .src(paths.favicon.src)
-    .pipe(favicon.stream(config))
-    .pipe(gulp.dest(paths.favicon.dest));
-}
-
 export function gulplisten() {
   gulp.watch(paths.styles.src, stylesDev);
   gulp.watch(paths.scripts.dev, scripts);
@@ -202,7 +188,6 @@ gulp.task("dev", dev);
 
 const build = gulp.series(
   clean,
-  favicons,
   html,
   minifyHtml,
   gulp.parallel(styles, minifyScripts, images)

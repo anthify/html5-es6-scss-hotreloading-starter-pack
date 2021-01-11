@@ -11,7 +11,7 @@
     "dev": "gulp dev"
   },
   "engines": {
-    "node": "10.13.0"
+    "node": "12.13.1"
   },
   "husky": {
     "hooks": {
@@ -39,7 +39,6 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "favicons": "^5.1.1",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-cli": "^2.0.1",

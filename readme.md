@@ -2,7 +2,7 @@
 
 ## To get started
 
-This requires node version `10.13.0` which is set in the `package.json`. It is entirely your choice to change it if this a blocker for you. I recommend using a node manager tool such as [n](https://github.com/tj/n) to quickly change your version without any hassle.
+This requires node version `12.13.1` which is set in the `package.json`. It is entirely your choice to change it if this a blocker for you. I recommend using a node manager tool such as [n](https://github.com/tj/n) to quickly change your version without any hassle.
 
 This also uses [yarn](https://yarnpkg.com/en/docs/install) package manager so you'll need this to run and install packages.
 
